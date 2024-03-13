@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 '''from django.contrib.auth.models import User
 from django.test import Client
 
@@ -18,8 +18,8 @@ def test_login():
     # Check if user is authenticated
     assert '_auth_user_id' in client.session
 '''
-=======
->>>>>>> 24061019744f0053519b61bdef71330bc4de888d
+
+
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
@@ -57,8 +57,3 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)  # or 302 if you're redirecting after form submission
         # Add additional assertions here based on the behavior of your view
 
-<<<<<<< HEAD
-    # Add more test cases as needed
-=======
-    # Add more test cases as needed
->>>>>>> 24061019744f0053519b61bdef71330bc4de888d

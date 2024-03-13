@@ -54,4 +54,3 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)  # or 302 if you're redirecting after form submission
         # Add additional assertions here based on the behavior of your view
 
-    # Add more test cases as needed
