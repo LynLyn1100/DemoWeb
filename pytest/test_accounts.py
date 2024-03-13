@@ -22,7 +22,7 @@ def test_login():
 import os
 from django.conf import settings
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'my_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.ecommerce.settings')
 # Hoặc thay đổi 'my_project.settings' bằng đường dẫn tới tệp cấu hình của Django của bạn
 
 # Sau đó gọi settings.configure() để thiết lập các thiết lập Django
