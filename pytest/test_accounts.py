@@ -19,6 +19,14 @@ def test_login():
     assert '_auth_user_id' in client.session
 '''
 
+import os
+from django.conf import settings
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'my_project.settings')
+# Hoặc thay đổi 'my_project.settings' bằng đường dẫn tới tệp cấu hình của Django của bạn
+
+# Sau đó gọi settings.configure() để thiết lập các thiết lập Django
+settings.configure()
 
 from django.test import TestCase
 from django.urls import reverse
