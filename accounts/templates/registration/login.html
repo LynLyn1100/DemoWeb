@@ -1,5 +1,7 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %} Login
-{% endblock title %} {% block content %}
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Đăng nhập {% endblock title %}
+{% block content %}
 
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -8,31 +10,35 @@
           <div class="card-body p-md-5">
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                
-                  <h2 class="display-4 text-center"><b>Log in</b></h2>
+
+                  <h2 class="display-4 text-center"><b>Đăng nhập</b></h2>
               <form method="POST">
-                  {% csrf_token %} {{form|crispy}}
+                  {% csrf_token %}{{form|crispy}}
+
+    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+
+
     <a href="{% url 'password_reset' %}" class="mb-2 d-block"
-      >Forgot Password?</a>
+      >Quên mật khẩu?</a>
     <div class="row">
       <div class="col-6 pr-1">
-        <button class="btn btn-primary btn-block" type="submit">Log in</button>
+        <button class="btn btn-primary btn-block" type="submit">Đăng nhập</button>
       </div>
       <div class="col-6 pl-1">
-        <button class="btn btn-danger btn-block" type="reset">Reset</button>
+        <button class="btn btn-danger btn-block" type="reset">Làm mới</button>
       </div>
     </div>
     <br>
 
 
     <div class="form-check d-flex justify-content mb-1 text-left">
-      <h5>Or sign in with &#160; &#160;
+      <h5>Hoặc đăng nhập với &#160; &#160;
       <a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook-square"></i></a> &#160;
       <a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter-square"></i></a> &#160;
-      <a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus-square"></i></a></p> 
-      
+      <a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus-square"></i></a></p>
+
     </div>
-                  <p class=" h9 fw-bold mb-9 text-left">You don't have a acount? <a href = {%url 'register' %}>Register</a></p>
+                  <p class=" h9 fw-bold mb-9 text-left">Bạn chưa có tài khoản? <a href = {%url 'register' %}>Đăng ký </a></p>
                   {% for message in messages %}
                   <p id='message' class="h5 fw-bold mb-5 mx-1 mx-mt-4">{{message}}</p>
 
