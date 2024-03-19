@@ -5,6 +5,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
+
+    <script src="/static/js/theme.js"></script>
+
+    <style>
+    /* Chủ đề sáng */
+    [data-theme='light'] body {
+        background-color: #ffffff; /* Màu nền trong chủ đề sáng */
+        color: #000000; /* Màu chữ trong chủ đề sáng */
+}
+
+/* Chủ đề tối */
+[data-theme='dark'] body {
+  background-color: #333333; /* Màu nền trong chủ đề tối */
+  color: #ffffff; /* Màu chữ trong chủ đề tối */
+}
+/* Biểu tượng chuyển đổi */
+    .theme-toggle-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+    /* Biểu tượng chuyển đổi */
+    .theme-toggle-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    </style>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -13,28 +40,14 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
   </head>
-  <!--
-  <body>
-    <section class="wrapper">
-        <h1></h1>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-    </section>
-  <body>-->
-    
+
     <nav class="navbar navbar-dark  navbar-expand-lg" style="background-color: #4d4dff;">
       <div class="container">
         <a href="{% url 'store:product_list' %}" class="navbar-brand">ONL SHOP</a>
@@ -46,10 +59,12 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
+
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="{% url 'store:product_list' %}" class="nav-link">
+                <a href="{% url 'store:product_list' %}" class="nav-link">
                 <i class="fa fa-shopping-bag fa-lg mr-1"></i> Cửa hàng
               </a>
             </li>
@@ -63,6 +78,12 @@
                 <i class="fa fa-twitch"></i> Liên hệ
               </a>
             </li>
+            <li class="nav-item" style="margin-left: auto;">
+           <a class="nav-link" onclick="toggleTheme()">
+             <i class="fa fa-adjust theme-toggle-icon"></i>
+              </a>
+                </li>
+
           </ul>
           <form action="/" class="inline-form mr-md-2 ml-auto">
             <div class="input-group">
@@ -128,30 +149,14 @@
       </div>
     </nav>
 
-    
+
     <div class="container">
-      {% if messages %}
-      <div class="alert alert-success my-2">
+      {% if messages %}<div class="alert alert-success my-2">
         {% for message in messages %} {{message}} {% endfor %}
       </div>
       {% endif %} {% block content %} {% endblock content %}
     </div>
-    <!--
-    <body>
-      <section class="wrapper">
-          <h1></h1>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-          <div><span class="dot" style="color:blue"></span></div>
-      </section>
-    -->
+
     <footer class="container--fluid text-center text-lg-start text-muted mt-5">
       <!-- Section: Links  -->
       <section class="">
@@ -171,7 +176,7 @@
               </p>
             </div>
             <!-- Grid column -->
-    
+
             <!-- Grid column -->
             <div class="col-6 col-sm-4 col-lg-2">
               <!-- Links -->
@@ -186,7 +191,7 @@
               </ul>
             </div>
             <!-- Grid column -->
-    
+
             <!-- Grid column -->
             <div class="col-6 col-sm-4 col-lg-2">
               <!-- Links -->
@@ -194,34 +199,34 @@
                 Thông tin
               </h6>
               <ul class="list-unstyled mb-4">
-                <li><a class="text-black-50" href="#">Help center</a></li>
-                <li><a class="text-black-50" href="#">Money refund</a></li>
-                <li><a class="text-black-50" href="#">Shipping info</a></li>
-                <li><a class="text-black-50" href="#">Refunds</a></li>
+                <li><a class="text-black-50" href="#">Trợ giúp</a></li>
+                <li><a class="text-black-50" href="#">Thông tin hoàn tiềntiền</a></li>
+                <li><a class="text-black-50" href="#">Thông tin vận chuyển</a></li>
+                <li><a class="text-black-50" href="#">Hoàn</a></li>
               </ul>
             </div>
             <!-- Grid column -->
-    
+
             <!-- Grid column -->
             <div class="col-6 col-sm-4 col-lg-2">
               <!-- Links -->
               <h6 class="text-uppercase text-black fw-bold mb-2">
                 Hỗ trợ
-              </h6>
+                </h6>
               <ul class="list-unstyled mb-4">
-                <li><a class="text-black-50" href="#">Help center</a></li>
-                <li><a class="text-black-50" href="#">Documents</a></li>
-                <li><a class="text-black-50" href="#">Account restore</a></li>
-                <li><a class="text-black-50" href="#">My orders</a></li>
+                <li><a class="text-black-50" href="#">Trợ giúp</a></li>
+                <li><a class="text-black-50" href="#">Tài liệu</a></li>
+                <li><a class="text-black-50" href="#">Khôi phục tài khoản</a></li>
+                <li><a class="text-black-50" href="#">Đơn hàng của tôi</a></li>
               </ul>
             </div>
             <!-- Grid column -->
-    
+
             <!-- Grid column -->
             <div class="col-12 col-sm-12 col-lg-3">
               <!-- Links -->
-              <h6 class="text-uppercase text-black fw-bold mb-2">Newsletter</h6>
-              <p class="text-black">Stay in touch with latest updates about our products and offers</p>
+              <h6 class="text-uppercase text-black fw-bold mb-2">Bản tin</h6>
+              <p class="text-black">Thường xuyên cập nhật những thông tin mới nhất về sản phẩm và ưu đãi của chúng tôi</p>
               <div class="input-group mb-3">
                 <input type="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" />
                 <button class="btn btn-light border shadow-0" type="button" id="button-addon2" data-mdb-ripple-color="dark">
@@ -234,7 +239,7 @@
         </div>
       </section>
       <!-- Section: Links  -->
-    
+
       <div class="">
         <div class="container">
           <div class="d-flex justify-content-between py-4 border-top">
@@ -246,11 +251,11 @@
               <i class="fa fa-cc-paypal text-dark" style="font-size:24px"></i>
             </div>
             <!-- payment -->
-    
+
             <!-- language selector -->
             <div class="dropdown dropup">
               <a class="dropdown-toggle text-black" href="#" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i class="flag-united-kingdom flag m-0 me-1"></i>English </a>
-    
+
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
                 <li>
                   <a class="dropdown-item" href="#"><i class="flag-united-kingdom flag"></i>English <i class="fa fa-check text-success ms-2"></i></a>
@@ -267,7 +272,7 @@
                 </li>
                 <li>
                   <a class="dropdown-item" href="#"><i class="flag-germany flag"></i>Deutsch</a>
-                </li>
+                  </li>
                 <li>
                   <a class="dropdown-item" href="#"><i class="flag-france flag"></i>Français</a>
                 </li>
@@ -289,19 +294,23 @@
       <div class="">
         <div class="container">
           <div class="d-flex justify-content-between py-4 border-top">
-    <script src="{% static 'app/js/cart.js' %}"> </script>      <!--muc dich la de load san pham roi moi load js-->
+    <!--<script src="{% static 'app/js/cart.js' %}"> </script>      <!--muc dich la de load san pham roi moi load js-->
           </div>
         </div>
       </div>
+
+
       <script src="https://tudongchat.com/js/chatbox.js"></script>
       <script>
         const tudong_chatbox = new TuDongChat('eYakGcE9cNYcP5_5YIPUH')
         tudong_chatbox.initial()
       </script>
-  </footer>   
+  </footer>
 
-  
+
   </body>
 </body>
+
+<!--<script src="/staticfiles_build/static/admin/js/theme.js"></script>-->
 
 </html>
