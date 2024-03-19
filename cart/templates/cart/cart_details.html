@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %} Cart {% endblock title %}
 {% block content %}
-<h1 class="display-4 mt-4 text-center">My cart</h1>
+<h1 class="display-4 mt-4 text-center">Giỏ hàng của tôi</h1>
 <hr />
 {% if total %}
 <div class="row justify-content-center">
@@ -8,11 +8,11 @@
     <table class="table table-borderless table-striped table-responsive">
       <thead class="thead-dark">
         <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Delete</th>
-          <th>Total</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Xóa</th>
+          <th>Tổng</th>
         </tr>
       </thead>
       <tbody>
@@ -45,7 +45,7 @@
               href="{% url 'cart:remove' i.product.id %}"
               class="btn btn-danger btn-sm"
             >
-              <i class="fa fa-times mr-1"></i> Delete
+              <i class="fa fa-times mr-1"></i> Xóa
             </a>
           </td>
           <td>{{i.total | floatformat:3}} VND </td>
@@ -63,14 +63,14 @@
   </div>
 </div>
 <div class="text-center">
-  <a href="{% url 'cart:clear' %}" class="btn btn-warning">Clean the cart </a>
-  <a href="{% url 'orders:place' %}" class="btn btn-success">Payment</a>
+  <a href="{% url 'cart:clear' %}" class="btn btn-warning">Làm trống giỏ hàng  </a>
+  <a href="{% url 'orders:place' %}" class="btn btn-success">Thanh toán </a>
 </div>
 {% else %}
 <div class="text-center">
-  <h3 class="font-weight-light">Empty Cart </h3>
+  <h3 class="font-weight-light">Giỏ hàng trống  </h3>
   <a href="{% url 'store:product_list' %}" class="btn btn-secondary">
-    Return to Store
+    Trở lại trang chủ
   </a>
 </div>
 {% endif %}
