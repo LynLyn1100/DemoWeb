@@ -2,32 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Invoice Order - {{order.id}}</title>
+    <!--Invoice order-->
+    <title>Hóa đơn thương mại - {{order.id}}</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
   </head>
-  <!--
-  <body>
-    <section class="wrapper">
-        <h1></h1>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-        <div><span class="dot" style="color:blue"></span></div>
-    </section>
-  </body>
--->
+
   <body>
     <div class="container my-4">
-      <h2>Order Code - {{order.id}}</h2>
+      <h2>Mã hóa đơn - {{order.id}}</h2>
       <h4 class="mb-3">
         Tới - {{order.user.first_name|default:order.user.username}}
         {{order.user.last_name}}
@@ -39,10 +24,10 @@
       <table class="table table-striped mt-4">
         <thead class="table-dark">
           <tr>
-            <td>Name </td>
-            <td>Price </td>
-            <td>Quantity</td>
-            <td>Total </td>
+            <td>Tên sản phẩm </td>
+            <td>Giá </td>
+            <td>Số lượng</td>
+            <td>Tổng </td>
           </tr>
         </thead>
         <tbody>
@@ -67,17 +52,17 @@
       </table>
       <h5>
         Payment Status - {% if order.paid %}
-        <span class="badge badge-success">Paid</span>
+        <span class="badge badge-success">Thanh toán</span>
         {% else %}
-        <span class="badge badge-danger">Awaiting Payment</span>
+        <span class="badge badge-danger">Đang chờ thanh toán</span>
         {% endif %}
       </h5>
-      <h5>Payment Methods - Payment upon delivery</h5>
-      <h5>Status - {{order.status}}</h5>
+      <h5>Phương thức thanh toán - Thanh toán khi nhận hàng</h5>
+      <h5>Trạng thái - {{order.status}}</h5>
     </div>
     <footer class="text-center d-print-none">
-      <button class="btn btn-primary" onclick="window.print()">Print </button>
-      <button class="btn btn-danger" onclick="history.back()">Return to </button>
+      <button class="btn btn-primary" onclick="window.print()">In </button>
+      <button class="btn btn-danger" onclick="history.back()">Trờ lại </button>
     </footer>
   </body>
 </html>
