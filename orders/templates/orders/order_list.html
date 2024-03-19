@@ -1,22 +1,7 @@
-{% extends 'base.html' %} {% block title %}Your Orders {% endblock title %}
+{% extends 'base.html' %} {% block title %}Đơn hàng của bạn {% endblock title %}
 {% block content %}
-<!--
-<body>
-  <section class="wrapper">
-      <h1></h1>
-      <div><span class="dot" class="page_container"></span></div>
-      <div><span class="dot" class="page_container"></span></div>
-      <div><span class="dot" class="page_container"></span></div>      
-      <div><span class="dot" class="page_container"></span></div>      
-      <div><span class="dot" class="page_container"></span></div>      
-      <div><span class="dot" class="page_container"></span></div>      
-      <div><span class="dot" class="page_container"></span></div>      
-      <div><span class="dot" class="page_container"></span></div>      
-      <div><span class="dot" class="page_container"></span></div>      
-      <div><span class="dot" class="page_container"></span></div>  
-    </section>
-</body>-->
-<h1 class="font-weight-light mt-3">My Orders</h1>
+
+<h1 class="font-weight-light mt-3">Đơn hàng của tôi</h1>
 <hr />
 <ul class="list-group my-3">
   {% for order in orders %}
@@ -31,39 +16,39 @@
       {% endif %}
     </h5>
     <h3>
-      <a href="{% url 'orders:details' order.id %}">Order id - {{order.id}}</a>
+      <a href="{% url 'orders:details' order.id %}">Mã đặt hàng - {{order.id}}</a>
     </h3>
     <h5>{{order.total_price | floatformat:3}} VND </h5>
-    <p class="mb-0">{{order.total_items}} Items</p>
+    <p class="mb-0">{{order.total_items}} mặt hàng </p>
     <p class="mb-0">
-      Delivery Address - {{order.name}}/{{order.address}}/{{order.phone}}
+      Thông tin vận chuyển - {{order.name}}/{{order.address}}/{{order.phone}}
     </p>
-    <p class="mb-0">Placed {{order.created|timesince}} ago.</p>
+    <p class="mb-0">Đặt {{order.created|timesince}} trước.</p>
   </li>
   {% empty %}
   <li class="list-group-item text-center border-white">
-    <h3 class="font-weight-light">You haven't placed any orders.</h3>
+    <h3 class="font-weight-light">Bạn chưa đặt bất kỳ đơn đặt hàng nào.</h3>
     <a href="{% url 'store:product_list' %}" class="btn btn-secondary">
-      Continue Shopping
+      Tiếp tục mua sắm
     </a>
   </li>
   {% endfor %}
 </ul>
 {% with page_obj as page %}
-<p>Page <b>{{page.number}}</b> of <b>{{page.paginator.num_pages}}</b></p>
+<p>Trang <b>{{page.number}}</b> của <b>{{page.paginator.num_pages}}</b></p>
 <nav>
   <ul class="pagination">
     {% if page.has_previous %}
     <li class="page-item">
       <a href="?page={{page.previous_page_number}}" class="page-link">
-        Previous
+        Trước
       </a>
     </li>
     {% endif %}
     <li class="page-item active"><a href="#" class="page-link">1</a></li>
     {% if page.has_next %}
     <li class="page-item">
-      <a href="?page={{page.next_page_number}}" class="page-link">Next</a>
+      <a href="?page={{page.next_page_number}}" class="page-link">Sau</a>
     </li>
     {% endif %}
   </ul>
