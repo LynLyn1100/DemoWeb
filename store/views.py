@@ -22,7 +22,7 @@ def delete_post(request, pk=None):
         post=get_object_or_404(Post, pk=pk)
         post.delete()
     post = Post.objects.all().order_by("-date")
-    paginator = Paginator(post, 5)
+    paginator = Paginator(post, 5) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return HttpResponseRedirect(reverse('blog'))
@@ -62,16 +62,6 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 
-import django_filters
-from .models import Product
-
-class ProductFilter(django_filters.FilterSet):
-    category = django_filters.CharFilter(field_name='category__name', label='Danh mục')
-    price = django_filters.NumberFilter(label='Giá')
-
-    class Meta:
-        model = Product
-        fields = ['category', 'price']
 
 class ProductList(FilterView):
     model = Product
@@ -90,7 +80,10 @@ class ProductList(FilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-
+    def get_queryset(self):
+        product = super().get_queryset()
+        return product.select_related('category').annotate(
+            total_purchases=Count('ordered')) #biến để đếm số lượng khách đã mua hàng (đếm hành động 'ordered')
 
 class ProdcutDetails(generic.DetailView):
     model = Product

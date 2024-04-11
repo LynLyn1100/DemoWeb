@@ -45,9 +45,8 @@ class Product(models.Model):
     price = models.IntegerField(null=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    #image = models.ImageField(null=True,blank=True)
+    image = models.ImageField(null=True,blank=True)
     #image = models.ImageField(upload_to='media/products/%Y/%m/%d/', blank=True)
-    image = models.FileField(upload_to = "image/",null=True)
     availibility = models.BooleanField(null=False, default=True) #xem san pham còn hàng hay đã hết hàng
     #det=models.TextField(null=False, blank=True)
     description = models.TextField(null=True,blank=True)
@@ -57,6 +56,13 @@ class Product(models.Model):
     material =  models.TextField(null=False,blank=True)
     branch= models.TextField(null=False,blank=True)
     detail=models.TextField(null=False,blank=True)
+    
+    image1 = models.CharField(max_length=255, null=True,blank=True)
+    image2 = models.CharField(max_length=255, null=True,blank=True)
+    image3 = models.CharField(max_length=255, null=True,blank=True)
+    video = models.FileField(upload_to="videos/",null=True,blank=True)
+    video1 = models.CharField(max_length=255, null=True,blank=True)
+
     class Meta:
         index_together = ('id', 'slug')
         ordering = ('-created',)

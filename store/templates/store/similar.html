@@ -1,6 +1,22 @@
 {% load thumbnail %}
-
-<h3 class="font-weight-light mb-0">Sản phẩm tương tự</h3>
+<!--
+<body>
+  <section class="wrapper">
+      <h1></h1>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+      <div><span class="dot" style="color:blue"></span></div>
+  </section>
+</body>
+-->
+<h3 class="font-weight-light mb-0">Similar Products</h3>
 <hr />
 <div class="row my-2">
   {% for product in products %}
@@ -23,7 +39,7 @@
   </div>
   {% empty %}
   <div class="col-12">
-    <h5 class="font-weight-light">Không tìm thấy sản phẩm tương tự.</h5>
+    <h5 class="font-weight-light">No similar products found.</h5>
   </div>
   {% endfor %}
 </div>
